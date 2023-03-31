@@ -136,10 +136,10 @@ def insert_tweet(connection,tweet):
             'protected': tweet['user']['protected'],
             'verified': tweet['user']['verified'],
             'screen_name': remove_nulls(tweet['user']['screen_name']),
-            'name': remove_nulls(tweet['user']['name']).
+            'name': remove_nulls(tweet['user']['name']),
             'location': remove_nulls(tweet['user']['location']),
             'description': remove_nulls(tweet['user']['description']),
-            'withheld_in_countries': tweet['user'].get('withheld_in_countries', None)m
+            'withheld_in_countries': tweet['user'].get('withheld_in_countries', None)
             })
 
 
@@ -346,7 +346,7 @@ def insert_tweet(connection,tweet):
                 ON CONFLICT DO NOTHING
                 ''')
 
-            res = cnnection.execute(sql, {
+            res = connection.execute(sql, {
                 'id_tweets': tweet['id'],
                 'id_urls':id_urls,
                 'type': remove_nulls(medium['type'])
